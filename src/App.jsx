@@ -1,13 +1,11 @@
-import KanbanBoard from "./components/KanbanBoard"
+import KanbanBoard from "./components/KanbanBoard";
 
 function App() {
-
   return (
-    <>
-    <h1>abc</h1>
+    <div>
       <KanbanBoard />
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
