@@ -6,7 +6,39 @@ import { useState } from "react";
 function KanbanBoard() {
   const [boardState, setBoardState] = useState(taskMock);
 
-  function onDragEnd(result) {}
+  function onDragEnd(result) {
+    const { destination, source, draggableId } = result;
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const column = boardState.columns[source.droppableId];
+    const newTaskIds = Array.from(column.tasksIds);
+    newTaskIds.splice(source.index, 1);
+    newTaskIds.splice(destination.index, 0, draggableId);
+
+    const newColumn = {
+      ...column,
+      tasksIds: newTaskIds,
+    };
+
+    const newBoardState = {
+      ...boardState,
+      columns: {
+        ...boardState.columns,
+        [newColumn.id]: newColumn,
+      },
+    };
+
+    setBoardState(newBoardState);
+  }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
