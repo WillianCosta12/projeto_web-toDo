@@ -7,11 +7,14 @@ function Column({ column, tasks }) {
     <div className="m-2 rounded border-2 border-gray-600">
       <p className="p-2 text-xl">{column.title}</p>
       <Droppable droppableId={column.id}>
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
-            className="p-2"
+            className={`p-2 transition-colors ${
+              snapshot.isDraggingOver && "bg-gray-400"
+            }`}
             ref={provided.innerRef}
             {...provided.droppableProps}
+            isDraggingOver={snapshot.isDraggingOver}
           >
             {tasks.map((task, index) => (
               <Task task={task} index={index} key={task.id}></Task>

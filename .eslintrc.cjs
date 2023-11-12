@@ -22,5 +22,11 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "react/prop-types": "off",
+    "react/no-unknown-property": [
+      "error",
+      {
+        ignore: ["isDragging", "isDraggingOver"],
+      },
+    ],
   },
 };
