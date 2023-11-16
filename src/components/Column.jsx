@@ -4,8 +4,8 @@ import { Droppable } from "react-beautiful-dnd";
 
 function Column({ column, tasks }) {
   return (
-    <div className="m-2 flex w-56 flex-col rounded border-2 border-gray-600">
-      <p className="p-2 text-xl">{column.title}</p>
+    <div className="m-2 flex w-full flex-col rounded border-2 border-gray-600 bg-gray-200">
+      <p className="p-2 text-center text-2xl font-semibold">{column.title}</p>
       <Droppable droppableId={column.id}>
         {(provided, snapshot) => (
           <div
