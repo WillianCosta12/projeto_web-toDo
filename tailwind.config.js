@@ -6,7 +6,7 @@ export default {
       colors: {
         "blue-green": "#5BC0BE",
         "light-yellow": "#F9ED69",
-        // purple: "#726A95",
+        purple: "#726A95",
         "soft-orange": "#F08A5D",
         "dark-blue": "#3B3B98",
       },
@@ -16,7 +16,7 @@ export default {
   safelist: [
     "bg-blue-green",
     "bg-light-yellow",
-    // "bg-purple",
+    "bg-purple",
     "bg-soft-orange",
     "bg-dark-blue",
   ],
