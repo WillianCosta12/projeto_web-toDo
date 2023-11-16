@@ -4,17 +4,17 @@ import { Droppable } from "react-beautiful-dnd";
 
 function Column({ column, tasks }) {
   return (
-    <div className="m-2 rounded border-2 border-gray-600">
+    <div className="m-2 flex w-56 flex-col rounded border-2 border-gray-600">
       <p className="p-2 text-xl">{column.title}</p>
       <Droppable droppableId={column.id}>
         {(provided, snapshot) => (
           <div
-            className={`p-2 transition-colors ${
+            className={`min-h-[100px] flex-1 p-2 transition-colors ${
               snapshot.isDraggingOver && "bg-gray-400"
             }`}
             ref={provided.innerRef}
             {...provided.droppableProps}
-            isDraggingOver={snapshot.isDraggingOver}
+            // isDraggingOver={snapshot.isDraggingOver}
           >
             {tasks.map((task, index) => (
               <Task task={task} index={index} key={task.id}></Task>

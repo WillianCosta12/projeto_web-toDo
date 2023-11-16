@@ -5,13 +5,13 @@ function Task({ task, index }) {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <div
-          className={`mb-2 rounded border-2 bg-white p-2 ${
+          className={`mb-2 rounded border-2 p-2 ${
             snapshot.isDragging ? "bg-soft-orange" : "bg-blue-green"
           }`}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          isDragging={snapshot.isDragging}
+          // isDragging={snapshot.isDragging}
         >
           {task.content}
         </div>

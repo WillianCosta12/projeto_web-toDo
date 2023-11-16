@@ -19,34 +19,66 @@ function KanbanBoard() {
       return;
     }
 
-    const column = boardState.columns[source.droppableId];
-    const newTaskIds = Array.from(column.tasksIds);
-    newTaskIds.splice(source.index, 1);
-    newTaskIds.splice(destination.index, 0, draggableId);
+    const start = boardState.columns[source.droppableId];
+    const finish = boardState.columns[destination.droppableId];
 
-    const newColumn = {
-      ...column,
-      tasksIds: newTaskIds,
+    if (start === finish) {
+      const newTaskIds = Array.from(start.tasksIds);
+      newTaskIds.splice(source.index, 1);
+      newTaskIds.splice(destination.index, 0, draggableId);
+
+      const newColumn = {
+        ...start,
+        tasksIds: newTaskIds,
+      };
+
+      const newBoardState = {
+        ...boardState,
+        columns: {
+          ...boardState.columns,
+          [newColumn.id]: newColumn,
+        },
+      };
+
+      setBoardState(newBoardState);
+      return;
+    }
+
+    const startStaksIds = Array.from(start.tasksIds);
+    startStaksIds.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      tasksIds: startStaksIds,
     };
 
-    const newBoardState = {
+    const finishStaksIds = Array.from(finish.tasksIds);
+    finishStaksIds.splice(destination.index, 0, draggableId);
+    const newFinish = {
+      ...finish,
+      tasksIds: finishStaksIds,
+    };
+    const newState = {
       ...boardState,
       columns: {
         ...boardState.columns,
-        [newColumn.id]: newColumn,
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish,
       },
     };
-
-    setBoardState(newBoardState);
+    setBoardState(newState);
   }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      {boardState.columnOrder.map((columnId) => {
-        const column = boardState.columns[columnId];
-        const tasks = column.tasksIds.map((taskId) => boardState.tasks[taskId]);
-        return <Column key={column.id} column={column} tasks={tasks} />;
-      })}
+      <div className="flex ">
+        {boardState.columnOrder.map((columnId) => {
+          const column = boardState.columns[columnId];
+          const tasks = column.tasksIds.map(
+            (taskId) => boardState.tasks[taskId],
+          );
+          return <Column key={column.id} column={column} tasks={tasks} />;
+        })}
+      </div>
     </DragDropContext>
   );
 }
