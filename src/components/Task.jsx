@@ -4,13 +4,13 @@ function Task({ task, index }) {
   function getBackgroundColor() {
     switch (task.priority) {
       case "alta":
-        return "bg-red-500";
+        return "bg-red-500 border-red-700";
       case "media":
-        return "bg-yellow-400";
+        return "bg-yellow-400 border-yellow-500";
       case "baixa":
-        return "bg-green-300";
+        return "bg-green-300 border-green-400";
       default:
-        return "bg-blue-green";
+        return "bg-blue-green border-blue-green";
     }
   }
 
@@ -18,15 +18,22 @@ function Task({ task, index }) {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <div
-          className={` mb-2 flex flex-row rounded-xl border-2 ${
-            snapshot.isDragging ? "bg-soft-orange" : getBackgroundColor()
+          className={`$ mb-3 flex flex-row rounded-xl border-2 transition-colors ${
+            snapshot.isDragging
+              ? "bg-dark-blue text-white"
+              : getBackgroundColor()
           }`}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           // isDragging={snapshot.isDragging}
         >
-          <div className="mr-2 w-2 bg-black"></div>
+          {/* Parte colorida no início da barrinha de task */}
+          {/* <div
+            className="mr-2 w-4 overflow-auto bg-black"
+            style={{ borderRadius: "12px 0 0 12px" }}
+          ></div> */}
+          <div className="w-4"></div>
           {task.content}
         </div>
       )}

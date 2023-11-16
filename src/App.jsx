@@ -3,8 +3,10 @@ import KanbanBoard from "./components/KanbanBoard";
 function App() {
   return (
     <div>
-      <h1 className="my-4 text-center text-4xl">Kanban Board</h1>
-      <KanbanBoard />
+      <div className="min-h-screen items-center justify-center bg-gray-100 p-3 px-5">
+        <h1 className="p-3 text-center text-5xl">Kanban Board</h1>
+        <KanbanBoard />
+      </div>
     </div>
   );
 }
