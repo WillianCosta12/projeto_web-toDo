@@ -4,6 +4,9 @@ export const taskMock = {
     "task-2": { id: "task-2", content: "Blablabla2", priority: "media" },
     "task-3": { id: "task-3", content: "Blablabla3", priority: "baixa" },
     "task-4": { id: "task-4", content: "Blablabla4", priority: "media" },
+    "task-5": { id: "task-5", content: "Blablabla5", priority: "media" },
+    "task-6": { id: "task-6", content: "Blablabla6", priority: "baixa" },
+    "task-7": { id: "task-7", content: "Blablabla7", priority: "alta" },
   },
   columns: {
     "column-1": {
@@ -14,12 +17,12 @@ export const taskMock = {
     "column-2": {
       id: "column-2",
       title: "In progress",
-      tasksIds: [],
+      tasksIds: ["task-5", "task-6"],
     },
     "column-3": {
       id: "column-3",
       title: "Done",
-      tasksIds: [],
+      tasksIds: ["task-7"],
     },
   },
   columnOrder: ["column-1", "column-2", "column-3"],

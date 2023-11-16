@@ -18,7 +18,7 @@ function Task({ task, index }) {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <div
-          className={`$ mb-3 flex flex-row rounded-xl border-2 transition-colors ${
+          className={`mb-3 flex h-10 flex-row items-center rounded-xl border-2 transition-colors ${
             snapshot.isDragging
               ? "bg-dark-blue text-white"
               : getBackgroundColor()
