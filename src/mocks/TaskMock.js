@@ -1,12 +1,47 @@
 export const taskMock = {
   tasks: {
-    "task-1": { id: "task-1", content: "Blablabla1", priority: "alta" },
-    "task-2": { id: "task-2", content: "Blablabla2", priority: "media" },
-    "task-3": { id: "task-3", content: "Blablabla3", priority: "baixa" },
-    "task-4": { id: "task-4", content: "Blablabla4", priority: "media" },
-    "task-5": { id: "task-5", content: "Blablabla5", priority: "media" },
-    "task-6": { id: "task-6", content: "Blablabla6", priority: "baixa" },
-    "task-7": { id: "task-7", content: "Blablabla7", priority: "alta" },
+    "task-1": {
+      id: "task-1",
+      content: "Blablabla1",
+      priority: "alta",
+      createdAt: new Date("2023/10/20"),
+    },
+    "task-2": {
+      id: "task-2",
+      content: "Blablabla2",
+      priority: "media",
+      createdAt: new Date("2023/10/20"),
+    },
+    "task-3": {
+      id: "task-3",
+      content: "Blablabla3",
+      priority: "baixa",
+      createdAt: new Date("2023/10/20"),
+    },
+    "task-4": {
+      id: "task-4",
+      content: "Blablabla4",
+      priority: "media",
+      createdAt: new Date("2023/10/20"),
+    },
+    "task-5": {
+      id: "task-5",
+      content: "Blablabla5",
+      priority: "media",
+      createdAt: new Date("2023/10/20"),
+    },
+    "task-6": {
+      id: "task-6",
+      content: "Blablabla6",
+      priority: "baixa",
+      createdAt: new Date("2023/10/20"),
+    },
+    "task-7": {
+      id: "task-7",
+      content: "Blablabla7",
+      priority: "alta",
+      createdAt: new Date("2023/10/20"),
+    },
   },
   columns: {
     "column-1": {
