@@ -4,13 +4,25 @@ function Task({ task, index }) {
   function getBackgroundColor() {
     switch (task.priority) {
       case "alta":
-        return "bg-red-500 border-red-700";
+        return "bg-red-200 border-red-400";
       case "media":
-        return "bg-yellow-400 border-yellow-500";
+        return "bg-yellow-200 border-yellow-400";
       case "baixa":
-        return "bg-green-300 border-green-400";
+        return "bg-green-200 border-green-400";
       default:
         return "bg-blue-green border-blue-green";
+    }
+  }
+  function getBackgroundContentColor() {
+    switch (task.priority) {
+      case "alta":
+        return "bg-red-400";
+      case "media":
+        return "bg-yellow-400";
+      case "baixa":
+        return "bg-green-400";
+      default:
+        return "bg-blue-green";
     }
   }
 
@@ -18,7 +30,7 @@ function Task({ task, index }) {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <div
-          className={`mb-3 flex h-10 flex-row items-center rounded-xl border-2 transition-colors ${
+          className={`mb-3 flex flex-col rounded-xl border-2 drop-shadow transition-colors ${
             snapshot.isDragging
               ? "bg-dark-blue text-white"
               : getBackgroundColor()
@@ -28,13 +40,17 @@ function Task({ task, index }) {
           ref={provided.innerRef}
           // isDragging={snapshot.isDragging}
         >
-          {/* Parte colorida no início da barrinha de task */}
-          {/* <div
-            className="mr-2 w-4 overflow-auto bg-black"
-            style={{ borderRadius: "12px 0 0 12px" }}
-          ></div> */}
-          <div className="w-4"></div>
-          {task.content}
+          <div
+            className={`${getBackgroundContentColor()} rounded-t-lg pl-4 text-lg`}
+          >
+            {task.content}
+          </div>
+          <div className="m-1 flex flex-col rounded-xl p-2">
+            <p>
+              <span className="text-gray-600">created at:</span>{" "}
+              {task.createdAt.toLocaleDateString()}
+            </p>
+          </div>
         </div>
       )}
     </Draggable>

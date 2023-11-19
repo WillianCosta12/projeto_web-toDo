@@ -70,7 +70,7 @@ function KanbanBoard() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="flex ">
+      <div className="flex justify-center">
         {boardState.columnOrder.map((columnId) => {
           const column = boardState.columns[columnId];
           const tasks = column.tasksIds.map(

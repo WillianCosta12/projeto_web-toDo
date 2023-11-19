@@ -9,7 +9,7 @@ function Column({ column, tasks }) {
       <Droppable droppableId={column.id}>
         {(provided, snapshot) => (
           <div
-            className={`min-h-[200px] flex-1 p-2 transition-colors ${
+            className={`min-h-[350px] flex-1 p-2 transition-colors ${
               snapshot.isDraggingOver && "bg-gray-400"
             }`}
             ref={provided.innerRef}
