@@ -46,10 +46,15 @@ function Task({ task, index }) {
             {task.content}
           </div>
           <div className="m-1 flex flex-col rounded-xl p-2">
+            <p>{task.description}</p>
             <p>
               <span className="text-gray-600">created at:</span>{" "}
               {task.createdAt.toLocaleDateString()}
             </p>
+          </div>
+          <div className="flex justify-center gap-4">
+            <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-1 px-3 border border-blue-700 rounded mb-2">Editar</button>
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 border border-blue-700 rounded mb-2">Remover</button>
           </div>
         </div>
       )}
