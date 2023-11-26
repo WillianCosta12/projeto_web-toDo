@@ -20,16 +20,16 @@ function Form(props) {
 
                     <div className="flex justify-center gap-4">
                         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-                            <input checked id="high-priority" type="radio" value="" name="high-priority" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600"/>
-                            <label for="high-priority" class="w-full py-4 px-2 ms-2 text-sm font-medium">Alta</label>
+                            <input checked id="high-priority" type="radio" value="" name="priority" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600"/>
+                            <label for="priority" class="w-full py-4 px-2 ms-2 text-sm font-medium">Alta</label>
                         </div>
                         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-                            <input id="medium-priority" type="radio" value="" name="medium-priority" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600"/>
-                            <label for="medium-priority" class="w-full py-4 px-2 ms-2 text-sm font-medium">Media</label>
+                            <input id="medium-priority" type="radio" value="" name="priority" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600"/>
+                            <label for="priority" class="w-full py-4 px-2 ms-2 text-sm font-medium">Media</label>
                         </div>
                         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-                            <input id="low-priority" type="radio" value="" name="low-priority" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600"/>
-                            <label for="low-priority" class="w-full py-4 px-2 ms-2 text-sm font-medium">Baixa</label>
+                            <input id="low-priority" type="radio" value="" name="priority" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600"/>
+                            <label for="priority" class="w-full py-4 px-2 ms-2 text-sm font-medium">Baixa</label>
                         </div>
                     </div>
 
