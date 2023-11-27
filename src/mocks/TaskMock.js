@@ -45,7 +45,7 @@ export const taskMock = {
     "task-7": {
       id: "task-7",
       content: "Blablabla7",
-      description: "",
+      description: "lorem lksdlsdklsdkldslsdkdls",
       priority: "alta",
       createdAt: new Date("2023/10/20"),
     },

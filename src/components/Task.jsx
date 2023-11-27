@@ -53,8 +53,12 @@ function Task({ task, index }) {
             </p>
           </div>
           <div className="flex justify-center gap-4">
-            <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-1 px-3 border border-blue-700 rounded mb-2">Editar</button>
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 border border-blue-700 rounded mb-2">Remover</button>
+            <button className="mb-2 rounded border border-blue-700 bg-teal-500 px-3 py-1 font-bold text-white hover:bg-teal-700">
+              Editar
+            </button>
+            <button className="mb-2 rounded border border-blue-700 bg-red-500 px-3 py-1 font-bold text-white hover:bg-red-700">
+              Remover
+            </button>
           </div>
         </div>
       )}
