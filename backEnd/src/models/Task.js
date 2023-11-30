@@ -1,14 +1,15 @@
 import { Model, DataTypes } from "sequelize";
 
-const sequelize = require("../config/database");
+import sequelize from "../config/database.js";
 
 class Task extends Model {}
 
 Task.init(
   {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
       allowNull: false,
     },
     content: {
