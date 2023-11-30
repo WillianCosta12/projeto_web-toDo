@@ -1,6 +1,7 @@
 import { Model, DataTypes } from "sequelize";
 
 import sequelize from "../config/database.js";
+import User from "./User.js";
 
 class Task extends Model {}
 
@@ -29,13 +30,19 @@ Task.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    // userId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
   },
   {
     sequelize,
-    modelName: "Task",
-    tableName: "tasks",
+    modelName: "task",
     timestamps: false,
   }
 );
+
+Task.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(Task, { foreignKey: "userId" });
 
 export default Task;
