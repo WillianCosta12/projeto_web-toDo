@@ -1,3 +1,4 @@
+import cors from "cors";
 import { config } from "dotenv";
 import express from "express";
 import sequelize from "./config/database.js";
@@ -16,6 +17,7 @@ sequelize
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use("/api", taskRoutes);
 app.use("/api", userRoutes);
