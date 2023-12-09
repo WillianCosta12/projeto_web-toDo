@@ -1,11 +1,39 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
+  function showToastMessage(type, message) {
+    if (type) {
+      toast.success(message, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      toast.error(message, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  }
 
   async function handleRegister() {
     try {
@@ -26,9 +54,10 @@ function RegisterPage() {
         throw new Error(data.message || "Erro durante o registro");
       }
 
+      showToastMessage(true, "Usuário registrado com sucesso");
       navigate("/");
     } catch (error) {
-      console.log("Erro durante o registro");
+      showToastMessage(false, error.message || "Erro durante o registro");
     }
   }
 
