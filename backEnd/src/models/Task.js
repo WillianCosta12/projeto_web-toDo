@@ -1,11 +1,11 @@
 import { Model, DataTypes } from "sequelize";
 
 import sequelize from "../config/database.js";
-import User from "./User.js";
+import UserModel from "./User.js";
 
-class Task extends Model {}
+class TaskModel extends Model {}
 
-Task.init(
+TaskModel.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -42,7 +42,7 @@ Task.init(
   }
 );
 
-Task.belongsTo(User, { foreignKey: "userId" });
-User.hasMany(Task, { foreignKey: "userId" });
+UserModel.hasMany(TaskModel, { foreignKey: "userId", as: "task" });
+TaskModel.belongsTo(UserModel, { foreignKey: "userId", as: "user" });
 
-export default Task;
+export default TaskModel;

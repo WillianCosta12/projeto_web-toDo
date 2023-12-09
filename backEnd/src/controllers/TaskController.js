@@ -1,9 +1,9 @@
-import Task from "../models/Task.js";
+import TaskModel from "../models/Task.js";
 
 class TaskController {
   async index(req, res) {
     try {
-      const tasks = await Task.findAll();
+      const tasks = await TaskModel.findAll();
 
       return res.json(tasks);
     } catch (error) {
@@ -16,7 +16,7 @@ class TaskController {
     try {
       const { content, description, priority } = req.body;
 
-      const task = await Task.create({ content, description, priority });
+      const task = await TaskModel.create({ content, description, priority });
 
       return res.status(201).json(task);
     } catch (error) {
@@ -30,7 +30,7 @@ class TaskController {
       const { id } = req.params;
       const { content, description, priority } = req.body;
 
-      const task = await Task.findByIdAndUpdate(
+      const task = await TaskModel.findByIdAndUpdate(
         id,
         { content, description, priority },
         { new: true }
@@ -51,7 +51,7 @@ class TaskController {
     try {
       const { id } = req.params;
 
-      const task = await Task.findByIdAndDelete(id);
+      const task = await TaskModel.findByIdAndDelete(id);
 
       if (!task) {
         return res.status(404).json({ error: "Tarefa não encontrada" });

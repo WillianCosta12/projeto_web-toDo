@@ -1,11 +1,11 @@
 import { Model, DataTypes } from "sequelize";
 
 import sequelize from "../config/database.js";
-// import Task from "./Task.js";
+import Task from "./Task.js";
 
-class User extends Model {}
+class UserModel extends Model {}
 
-User.init(
+UserModel.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ User.init(
       autoIncrement: true,
       allowNull: false,
     },
-    email: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -30,4 +30,4 @@ User.init(
   }
 );
 
-export default User;
+export default UserModel;
