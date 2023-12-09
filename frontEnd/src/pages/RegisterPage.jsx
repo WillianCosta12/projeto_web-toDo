@@ -101,7 +101,7 @@ function RegisterPage() {
           className="focus:shadow-outline w-full rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
           onClick={handleRegister}
         >
-          Registrar
+          Confirmar cadastro
         </button>
       </div>
     </div>

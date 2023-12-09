@@ -11,7 +11,7 @@ function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await fetch("blablabla/api/login", {
+    const response = await fetch("http://localhost:3000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,14 +19,15 @@ function LoginPage() {
       body: JSON.stringify({ username, password }),
     });
 
+    console.log("response", response);
+
     if (response.ok) {
       const data = await response.json();
       console.log("Usuário logado com sucesso:", data);
+      navigate("/home");
     } else {
       console.error("Erro ao fazer login:", response.statusText);
     }
-    // Mover para dentro do IF após implementação da requisição
-    navigate("/home");
   }
 
   return (
@@ -69,6 +70,12 @@ function LoginPage() {
             type="submit"
           >
             Entrar
+          </button>
+          <button
+            className="focus:shadow-outline mt-4 w-full rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
+            onClick={() => navigate("/registro")}
+          >
+            Registre-se
           </button>
         </form>
       </div>
