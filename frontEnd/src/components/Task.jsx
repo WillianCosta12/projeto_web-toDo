@@ -26,6 +26,15 @@ function Task({ task, index }) {
     }
   }
 
+  async function removeTask(){
+    const response = await fetch("http://localhost:3000/api/tasks/" + task.id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  }
+
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
@@ -56,7 +65,7 @@ function Task({ task, index }) {
             <button className="mb-2 rounded border border-blue-700 bg-teal-500 px-3 py-1 font-bold text-white hover:bg-teal-700">
               Editar
             </button>
-            <button className="mb-2 rounded border border-blue-700 bg-red-500 px-3 py-1 font-bold text-white hover:bg-red-700">
+            <button className="mb-2 rounded border border-blue-700 bg-red-500 px-3 py-1 font-bold text-white hover:bg-red-700" onClick={removeTask}>
               Remover
             </button>
           </div>

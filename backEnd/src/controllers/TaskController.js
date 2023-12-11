@@ -51,7 +51,11 @@ class TaskController {
     try {
       const { id } = req.params;
 
-      const task = await TaskModel.findByIdAndDelete(id);
+      const task = await TaskModel.destroy({
+        where: {
+          id: id
+        },
+      });
 
       if (!task) {
         return res.status(404).json({ error: "Tarefa não encontrada" });
