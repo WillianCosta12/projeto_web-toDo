@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -9,25 +11,63 @@ function LoginPage() {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
+  function showToastMessage(type, message) {
+    if (type) {
+      toast.success(message, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      toast.error(message, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
-
-    console.log("response", response);
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log("Usuário logado com sucesso:", data);
-      navigate("/home");
-    } else {
-      console.error("Erro ao fazer login:", response.statusText);
+    try{
+      if (username === "" || password === "") {
+        throw new Error("Preencha todos os campos");
+      }
+  
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      console.log("response", response);
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Usuário logado com sucesso:", data);
+        showToastMessage(true, "Usuário Logado com sucesso");
+        navigate("/home");
+      } else {
+        const data = await response.json();
+        throw new Error(data.message || "Erro durante o login");
+        console.error("Erro ao fazer login:", response.statusText);
+      }
+    }catch(error){
+      showToastMessage(false, error.message || "Erro durante o login");
     }
+
   }
 
   return (
