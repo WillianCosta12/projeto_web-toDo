@@ -36,7 +36,7 @@ function Task({ task, index }) {
   }
 
   return (
-    <Draggable draggableId={task.id} index={index}>
+    <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
       {(provided, snapshot) => (
         <div
           className={`mb-3 flex flex-col rounded-xl border-2 drop-shadow transition-colors ${
@@ -50,7 +50,7 @@ function Task({ task, index }) {
           // isDragging={snapshot.isDragging}
         >
           <div
-            className={`${getBackgroundContentColor()} rounded-t-lg pl-4 text-lg`}
+            className={`${getBackgroundContentColor()} rounded-t-lg pl-4 text-lg font-bold`}
           >
             {task.content}
           </div>
@@ -58,7 +58,7 @@ function Task({ task, index }) {
             <p>{task.description}</p>
             <p>
               <span className="text-gray-600">created at:</span>{" "}
-              {task.createdAt.toLocaleDateString()}
+              {task.createdAt}
             </p>
           </div>
           <div className="flex justify-center gap-4">
